@@ -1,6 +1,6 @@
 # themedata
 
-A new Flutter project.
+A new Flutter project. A git update. 
 
 ## Getting Started
 
