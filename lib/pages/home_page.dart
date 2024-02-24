@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:themedata/theme/theme_provider.dart';
 
+import 'home_screen.dart';
+import 'settings_screen.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -11,6 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  int _selectedIndex = 0;
+
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomeScreen(),
+    const SettingScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
 
@@ -19,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
-        title: const Text('Theme'),
+        title: const Text('Theme App'),
         actions: [
           Switch(value: Theme.of(context).brightness == Brightness.dark, onChanged: (isOn) {
             setState(() {
@@ -28,18 +38,26 @@ class _HomePageState extends State<HomePage> {
           })
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Theme.of(context).brightness == Brightness.light 
-              ? Icon(Icons.sunny, size: 100, color: Colors.yellow[900])
-              : const Icon(Icons.dark_mode, size: 100, color: Colors.black),
-            const SizedBox(height: 15),
-            Text(Theme.of(context).brightness == Brightness.light ? 'Light' : 'Dark', style: Theme.of(context).textTheme.displayMedium)
-          ]
-        )
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+        unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          onItemTap(index);
+        },
       ),
+      body: _widgetOptions.elementAt(_selectedIndex),
     );
+  }
+
+  void onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
