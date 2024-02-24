@@ -2,7 +2,7 @@
 
 Application to get and use the current device appearance or establish a custom one (Dark or Light)
 
-## Getting Started - v2
+## Getting Started
 
 This project is a starting point for a Flutter application.
 
