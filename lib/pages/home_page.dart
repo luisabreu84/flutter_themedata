@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   int _selectedIndex = 0;
 
@@ -20,6 +20,18 @@ class _HomePageState extends State<HomePage> {
     const HomeScreen(),
     const SettingScreen(),
   ];
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    Provider.of<ThemeProvider>(context, listen: false).toggleThemeBySystem();
+    super.didChangePlatformBrightness();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +42,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
         title: const Text('Theme App'),
-        actions: [
-          Switch(value: Theme.of(context).brightness == Brightness.dark, onChanged: (isOn) {
-            setState(() {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-            });
-          })
-        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
         unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
+          BottomNavigationBarItem(icon: Icon(Icons.grade), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Settings')
         ],
         currentIndex: _selectedIndex,
         onTap: (index) {
