@@ -2,6 +2,19 @@
 
 Application to get and use the current device appearance or establish a custom one (Dark or Light)
 
+## Screenshots
+
+Light mode: 
+<img width="478" alt="ThemeLight" src="https://github.com/luisabreu84/flutter_themedata/assets/67016876/8e53f164-e82e-41a5-804b-4f32191c1362">
+
+Dark mode 1:
+
+Dark mode 2:
+
+Using system appearance:
+
+Not using the system appearance: (Allowing to change the mode between light and dark)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
