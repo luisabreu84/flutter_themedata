@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'theme/theme_provider.dart';
 
-void main() {
+void main() async {
+
+  await GetStorage.init();
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(), 
