@@ -1,4 +1,4 @@
-# Flutter Theme Data App
+# Flutter App - ThemeData, Storage and Provider
 
 Application to get and use the current device appearance or establish a custom one (Dark or Light)
 
