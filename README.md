@@ -5,7 +5,7 @@ Application to get and use the current device appearance or establish a custom o
 ## Screenshots
 
 Light mode: 
-<img width="478" alt="ThemeLight" src="https://github.com/luisabreu84/flutter_themedata/assets/67016876/8e53f164-e82e-41a5-804b-4f32191c1362">
+<img width="478" alt="ThemeLight" src="https://github.com/luisabreu84/flutter_themedata/assets/assets/screenshots/ThemeLight.png">
 
 Dark mode 1:
 
